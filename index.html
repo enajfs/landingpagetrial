@@ -2,11 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>FreelanceFlow | Animated Freelancing Landing Page</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>HeadStart — Morning Briefing that tracks follow‑through</title>
+  <meta name="description" content="HeadStart cuts through inbox noise, surfaces what matters, and ensures you never forget a reply. Morning briefing at 06:55, on‑demand all day, self‑healing when life gets busy.">
+  <!-- Premium Font Pairing: Syne (Display) + Lexend (Body) — distinctive, modern, not generic -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ---------- CSS Variables: refined, warm & premium palette ---------- */
+    :root {
+      --bg-base: #FCF9F4;      /* warm off-white, paper-like */
+      --bg-surface: #FFFFFF;
+      --bg-elevated: #F5F0E8;
+      --text-primary: #1F1C1A;
+      --text-secondary: #4B3F3A;
+      --text-muted: #7F6E65;
+      --accent: #C85C2A;       /* terracotta / rust — warm, confident */
+      --accent-dark: #A8461A;
+      --accent-soft: #EED7CC;
+      --border-light: #E8E0D8;
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+      --transition: all 0.25s ease-out;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,699 +32,630 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fefefe;
-      color: #1a1e2b;
-      scroll-behavior: smooth;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: 'Lexend', sans-serif;
+      font-weight: 400;
       line-height: 1.5;
-      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    /* ===== ANIMATIONS ===== */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(35px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    h1, h2, h3, .logo, .nav-cta, .big-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    h1 {
+      font-size: clamp(2.8rem, 8vw, 4.8rem);
+      line-height: 1.2;
+      font-weight: 800;
+      color: var(--text-primary);
     }
 
-    @keyframes softPulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.3); }
-      70% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      font-weight: 700;
     }
 
-    @keyframes floatIcon {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-      100% { transform: translateY(0px); }
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
     }
 
-    /* reveal class for scroll animations */
-    .reveal {
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ---------- Navigation ---------- */
+    .navbar {
+      padding: 2rem 0 1rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+    }
+    .logo span {
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .btn-outline-light {
+      border: 1.5px solid var(--accent);
+      background: transparent;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-family: 'Syne', sans-serif;
+      transition: var(--transition);
+      color: var(--accent);
+    }
+    .btn-outline-light:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      font-family: 'Syne', sans-serif;
+      padding: 0.9rem 2rem;
+      border-radius: 3rem;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 2px 6px rgba(200, 92, 42, 0.2);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -8px rgba(200, 92, 42, 0.4);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid var(--text-primary);
+      color: var(--text-primary);
+      padding: 0.8rem 1.8rem;
+      border-radius: 3rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .btn-secondary:hover {
+      background: var(--text-primary);
+      color: white;
+    }
+
+    /* ---------- Hero section ---------- */
+    .hero {
+      padding: 3rem 0 5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3rem;
+    }
+    .hero-content {
+      flex: 1.2;
+    }
+    .hero-visual {
+      flex: 1;
+      background: var(--bg-elevated);
+      border-radius: 2rem;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Syne', sans-serif;
+    }
+    .hero-description {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin: 1.5rem 0 2rem;
+      max-width: 90%;
+    }
+    .mockup-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .mockup-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .mockup-item {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .pill {
+      background: var(--bg-elevated);
+      padding: 0.2rem 0.7rem;
+      border-radius: 2rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+
+    /* ---------- Section base ---------- */
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .section-subhead {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Problem Grid */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .problem-card {
+      background: var(--bg-surface);
+      padding: 2rem;
+      border-radius: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .problem-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+    .problem-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Feature Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0 1rem;
+    }
+    .feature {
+      background: var(--bg-surface);
+      border-radius: 1.8rem;
+      padding: 2rem;
+      transition: var(--transition);
+      border: 1px solid var(--border-light);
+    }
+    .feature h3 {
+      font-size: 1.5rem;
+    }
+
+    /* CTA Form */
+    .cta-card {
+      background: var(--text-primary);
+      color: white;
+      border-radius: 2.5rem;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .cta-card h2 {
+      color: white;
+    }
+    .form-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0 1rem;
+    }
+    .form-group input, .form-group select {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.9rem 1.2rem;
+      border-radius: 3rem;
+      border: none;
+      font-family: 'Lexend', sans-serif;
+      background: rgba(255,255,255,0.95);
+      font-size: 0.95rem;
+    }
+    .platform-toggle {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .toggle-option {
+      background: rgba(255,255,255,0.15);
+      border-radius: 2rem;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    input[type="radio"] {
+      display: none;
+    }
+    .toggle-option.selected {
+      background: var(--accent);
+      color: white;
+    }
+    .form-message {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 800px;
+      margin: 2rem auto 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border-light);
+      padding: 1.2rem 0;
+      cursor: pointer;
+    }
+    .faq-question {
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--text-secondary);
+      padding-top: 0;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 240px;
+      padding-top: 0.8rem;
+    }
+
+    /* About */
+    .about-wrap {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .about-text {
+      flex: 1.2;
+    }
+    .signet {
+      flex: 0.8;
+      background: var(--bg-elevated);
+      border-radius: 2rem;
+      padding: 2rem;
+      text-align: center;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2.5rem 0 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+    }
+
+    /* Animations */
+    .fade-up {
       opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 0.75s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.7s ease;
     }
-
-    .reveal.visible {
+    .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Global */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* header / nav - responsive */
-    header {
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 0;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .logo {
-      font-size: 1.7rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      letter-spacing: -0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 500;
-      color: #2d3a5e;
-      transition: 0.2s;
-      font-size: 1rem;
-    }
-
-    .nav-links a:hover {
-      color: #2563eb;
-    }
-
-    .btn-primary {
-      background: #2563eb;
-      color: white;
-      padding: 10px 24px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.25s;
-      display: inline-block;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-    }
-
-    .btn-primary:hover {
-      background: #1d4ed8;
-      transform: scale(1.02);
-      box-shadow: 0 12px 22px -12px #2563eb;
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid #2563eb;
-      color: #2563eb;
-      padding: 9px 23px;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.25s;
-      display: inline-block;
-    }
-
-    .btn-outline:hover {
-      background: #2563eb10;
-      transform: translateY(-2px);
-    }
-
-    /* hero section */
-    .hero {
-      padding: 70px 0 70px;
-    }
-
-    .hero-grid {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      flex-wrap: wrap;
-    }
-
-    .hero-content {
-      flex: 1;
-      animation: fadeUp 0.8s ease-out forwards;
-    }
-
-    .hero-badge {
-      background: #e0e7ff;
-      color: #1e40af;
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-      animation: fadeIn 1s;
-    }
-
-    .hero-content h1 {
-      font-size: 3.3rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
-      color: #0f172a;
-    }
-
-    .hero-highlight {
-      color: #2563eb;
-      border-bottom: 3px solid #93c5fd;
-    }
-
-    .hero-desc {
-      font-size: 1.1rem;
-      color: #334155;
-      margin-bottom: 32px;
-      max-width: 500px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .hero-stats {
-      margin-top: 40px;
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-
-    .stat span {
-      font-size: 1.8rem;
-      font-weight: 800;
-      display: block;
-      color: #0f172a;
-    }
-
-    .hero-visual {
-      flex: 1;
-      background: linear-gradient(145deg, #2563eb08, #7c3aed08);
-      border-radius: 48px;
-      padding: 20px;
-      text-align: center;
-      animation: fadeUp 0.9s ease-out 0.05s forwards;
-    }
-
-    .hero-visual svg {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* section titles */
-    .section-title {
-      font-size: 2.3rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 16px;
-      color: #0f172a;
-    }
-
-    .section-sub {
-      text-align: center;
-      color: #4b5563;
-      margin-bottom: 50px;
-    }
-
-    /* services cards */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 32px;
-      margin: 30px 0 30px;
-    }
-
-    .service-card {
-      background: white;
-      border-radius: 28px;
-      padding: 32px 24px;
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.05);
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      border: 1px solid #f0f2f5;
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 30px 40px -16px rgba(0,0,0,0.12);
-      border-color: #cbd5e1;
-    }
-
-    .service-icon {
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-      display: inline-block;
-      animation: floatIcon 3s ease-in-out infinite;
-    }
-
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-    }
-
-    .service-card p {
-      color: #475569;
-    }
-
-    /* about wrap */
-    .about-wrap {
-      background: #f8fafc;
-      border-radius: 48px;
-      padding: 50px 40px;
-      margin: 50px 0;
-    }
-
-    .about-flex {
-      display: flex;
-      gap: 48px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .about-text {
-      flex: 1.2;
-    }
-
-    .about-text h3 {
-      font-size: 1.8rem;
-      margin-bottom: 16px;
-    }
-
-    .skill-badge {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .skill-badge span {
-      background: white;
-      padding: 6px 18px;
-      border-radius: 40px;
-      font-weight: 500;
-      font-size: 0.85rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-
-    .testimonial-card {
-      background: white;
-      border-radius: 32px;
-      padding: 28px;
-      margin: 20px 0;
-      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.08);
-      transition: transform 0.25s;
-    }
-
-    .testimonial-card:hover {
-      transform: scale(1.01);
-    }
-
-    .testimonial-text {
-      font-size: 1.1rem;
-      font-style: italic;
-      color: #1e293b;
-    }
-
-    .client-name {
-      margin-top: 20px;
-      font-weight: 700;
-    }
-
-    /* contact form */
-    .contact-form {
-      max-width: 640px;
-      margin: 0 auto;
-      background: white;
-      padding: 40px 36px;
-      border-radius: 48px;
-      box-shadow: 0 25px 40px -14px rgba(0,0,0,0.08);
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group input, .form-group textarea {
-      width: 100%;
-      padding: 14px 20px;
-      border: 1px solid #e2e8f0;
-      border-radius: 40px;
-      font-family: inherit;
-      font-size: 1rem;
-      transition: 0.2s;
-      background: white;
-    }
-
-    .form-group input:focus, .form-group textarea:focus {
-      outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 4px #2563eb20;
-    }
-
-    button[type="submit"] {
-      width: 100%;
-      background: #2563eb;
-      border: none;
-      padding: 15px;
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 40px;
-      cursor: pointer;
-      transition: all 0.2s;
-      color: white;
-    }
-
-    button[type="submit"]:hover {
-      background: #1d4ed8;
-      transform: translateY(-2px);
-      animation: softPulse 0.8s ease-out;
-    }
-
-    footer {
-      background: #0f172a;
-      color: #cbd5e1;
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 70px;
-    }
-
-    /* ===== RESPONSIVE STYLES ===== */
-    @media (max-width: 900px) {
-      .hero-content h1 {
-        font-size: 2.6rem;
-      }
-      .section-title {
-        font-size: 2rem;
-      }
-      .about-wrap {
-        padding: 35px 24px;
-      }
-    }
-
     @media (max-width: 768px) {
       .container {
-        padding: 0 20px;
+        padding: 0 1.5rem;
       }
-      .nav-bar {
+      .navbar {
         flex-direction: column;
         align-items: center;
       }
-      .nav-links {
-        gap: 24px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .hero-grid {
-        flex-direction: column-reverse;
-        text-align: center;
-      }
-      .hero-desc {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .hero-buttons {
-        justify-content: center;
-      }
-      .hero-stats {
-        justify-content: center;
-      }
-      .about-flex {
+      .hero {
         flex-direction: column;
-        text-align: center;
       }
-      .skill-badge {
-        justify-content: center;
-      }
-      .contact-form {
-        padding: 28px 20px;
-      }
-      .hero-content h1 {
-        font-size: 2.2rem;
-      }
-      .section-title {
-        font-size: 1.8rem;
-      }
-      .services-grid {
-        gap: 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-content h1 {
-        font-size: 1.9rem;
-      }
-      .btn-primary, .btn-outline {
-        padding: 8px 18px;
-        font-size: 0.85rem;
-      }
-      .stat span {
-        font-size: 1.4rem;
-      }
-      .service-card {
-        padding: 24px 18px;
-      }
-    }
-
-    /* reduce motion if user prefers */
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .service-card, .btn-primary, .hero-content, .hero-visual {
-        transition: none;
-        animation: none;
-        transform: none;
-        opacity: 1;
-      }
-      .service-icon {
-        animation: none;
+      .cta-card {
+        padding: 2rem 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="nav-bar">
-        <div class="logo">⚡ FreelanceFlow</div>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <a href="#contact" class="btn-primary">Hire Me →</a>
+
+<div class="container">
+  <!-- Navigation -->
+  <div class="navbar">
+    <a href="#" class="logo">Head<span>Start</span></a>
+    <div class="nav-links">
+      <a href="#problem">Problem</a>
+      <a href="#solution">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a href="#early-access" class="btn-outline-light">Early access</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero fade-up">
+    <div class="hero-content">
+      <div class="hero-badge">Pre‑launch · invite‑only</div>
+      <h1>Cut through inbox noise.<br> Never drop a reply.</h1>
+      <p class="hero-description">HeadStart delivers a morning briefing that surfaces only what matters — and tracks whether you followed through. Self‑healing, forgiving, and ready at 06:55.</p>
+      <a href="#early-access" class="btn-primary">Get early access →</a>
+    </div>
+    <div class="hero-visual">
+      <div class="mockup-card">
+        <div class="mockup-header">
+          <span>📋 Morning Briefing · 06:55</span>
+          <span class="pill">3 action items</span>
+        </div>
+        <div class="mockup-item">
+          <div class="status-dot"></div>
+          <span><strong>Proposal feedback</strong> — draft started</span>
+        </div>
+        <div class="mockup-item">
+          <div class="status-dot"></div>
+          <span><strong>Q2 forecast</strong> — pending reply</span>
+        </div>
+        <div class="mockup-item">
+          <div class="status-dot"></div>
+          <span><strong>Client contract</strong> — responded ✓</span>
+        </div>
+        <div style="margin-top:1rem; border-top:1px solid var(--border-light); padding-top:0.6rem; font-size:0.75rem; color:var(--text-muted);">📎 unresolved items roll into tomorrow</div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <!-- Hero section -->
-    <section id="home">
-      <div class="container hero">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <div class="hero-badge">✨ top-rated freelancer</div>
-            <h1>Build <span class="hero-highlight">digital products</span> that scale & shine</h1>
-            <p class="hero-desc">I craft high‑performance websites, web apps, and brand experiences. Fast, modern, and tailored for your business.</p>
-            <div class="hero-buttons">
-              <a href="#contact" class="btn-primary">Start a project →</a>
-              <a href="#services" class="btn-outline">Explore services</a>
-            </div>
-            <div class="hero-stats">
-              <div class="stat"><span>50+</span> projects</div>
-              <div class="stat"><span>98%</span> client satisfaction</div>
-              <div class="stat"><span>24/7</span> support</div>
-            </div>
-          </div>
-          <div class="hero-visual">
-            <svg width="280" height="240" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="40" y="80" width="320" height="180" rx="28" fill="#EFF6FF" stroke="#2563eb" stroke-width="2"/>
-              <circle cx="120" cy="150" r="20" fill="#3b82f6" fill-opacity="0.2" stroke="#2563eb" stroke-width="1.5"/>
-              <circle cx="280" cy="150" r="20" fill="#a855f7" fill-opacity="0.2" stroke="#7c3aed" stroke-width="1.5"/>
-              <path d="M160 190 L240 190 L200 230 L160 190Z" fill="#2563eb" fill-opacity="0.2" stroke="#2563eb"/>
-              <line x1="200" y1="100" x2="200" y2="80" stroke="#2563eb" stroke-width="2"/>
-              <circle cx="200" cy="70" r="6" fill="#2563eb"/>
-              <text x="170" y="270" fill="#0f172a" font-weight="500" font-size="14">Full‑stack • UI/UX • Performance</text>
-            </svg>
-          </div>
-        </div>
+  <!-- Problem Section -->
+  <section id="problem">
+    <div class="fade-up">
+      <div class="section-subhead">The real cost of email chaos</div>
+      <h2>You lose time. And trust.</h2>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card fade-up">
+        <div class="problem-icon">⏳</div>
+        <h3>The stolen hour</h3>
+        <p>Every day starts with 45–60 minutes of inbox catch-up before real work begins. That’s 12.5% of payroll spent on orientation, not production.</p>
       </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services">
-      <div class="container">
-        <h2 class="section-title reveal">What I deliver</h2>
-        <p class="section-sub reveal">End‑to‑end freelancing solutions tailored to your goals</p>
-        <div class="services-grid">
-          <div class="service-card reveal">
-            <div class="service-icon">🌐</div>
-            <h3>Websites & Landing Pages</h3>
-            <p>Custom, responsive, SEO-friendly websites that convert visitors into customers. From portfolios to business sites.</p>
-          </div>
-          <div class="service-card reveal">
-            <div class="service-icon">⚙️</div>
-            <h3>Web Apps & Dashboards</h3>
-            <p>Interactive tools, admin panels, real‑time dashboards with modern frameworks (React, Vue, Node.js).</p>
-          </div>
-          <div class="service-card reveal">
-            <div class="service-icon">🎨</div>
-            <h3>UI/UX Design</h3>
-            <p>Beautiful, user‑friendly interfaces, wireframes, and prototyping. Designed to delight and engage.</p>
-          </div>
-          <div class="service-card reveal">
-            <div class="service-icon">🚀</div>
-            <h3>Performance & Optimization</h3>
-            <p>Speed audits, Core Web Vitals, SEO improvements — make your site fly on all devices.</p>
-          </div>
-        </div>
+      <div class="problem-card fade-up">
+        <div class="problem-icon">💔</div>
+        <h3>Forgotten replies</h3>
+        <p>You start a reply, get distracted, the draft sits unsent. Or you read an email meaning to respond later and forget entirely. Each missed follow-up costs deals and relationships.</p>
       </div>
-    </section>
-
-    <!-- About + testimonials -->
-    <div class="container">
-      <div class="about-wrap" id="about">
-        <div class="about-flex">
-          <div class="about-text reveal">
-            <h3>👋 I'm Alex — freelance developer & designer</h3>
-            <p>With 6+ years of experience working with startups and agencies, I turn complex ideas into elegant, high‑performance digital experiences. I believe great code and thoughtful design go hand in hand.</p>
-            <p>My workflow is transparent, agile, and client‑first. Every project includes responsive design, clean documentation, and ongoing support.</p>
-            <div class="skill-badge">
-              <span>React / Next.js</span><span>Vue / Nuxt</span><span>Python / Django</span><span>Node.js</span><span>TailwindCSS</span><span>Figma</span>
-            </div>
-          </div>
-          <div style="flex:0.8;" class="reveal">
-            <div class="testimonial-card" style="margin:0;">
-              <div class="testimonial-text">“Alex redesigned our entire platform and increased conversion by 40% within two months. Absolute pro, great communication, and unmatched speed.”</div>
-              <div class="client-name">— Sarah Chen, Founder of Lumina</div>
-            </div>
-          </div>
-        </div>
+      <div class="problem-card fade-up">
+        <div class="problem-icon">🌀</div>
+        <h3>Fragmented re‑orientation</h3>
+        <p>After meetings, post-lunch, late afternoon — each inbox glance steals 10 minutes. Plus tool-amnesia: without a daily anchor, even good habits fade.</p>
       </div>
     </div>
+  </section>
 
-    <!-- Second testimonial row -->
-    <div class="container">
-      <div style="margin: 30px 0 20px;">
-        <h2 class="section-title reveal">What clients say 💬</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
-          <div class="testimonial-card reveal" style="margin:0; flex:1; min-width: 250px;">
-            <div class="testimonial-text">“Fast turnaround, pixel perfect implementation. He understood our vision right away. Will hire again.”</div>
-            <div class="client-name">— Michael R., CTO</div>
-          </div>
-          <div class="testimonial-card reveal" style="margin:0; flex:1; min-width: 250px;">
-            <div class="testimonial-text">“Deep technical knowledge + creative flair. The landing page he built for us is stunning and outperforms our old site 3x.”</div>
-            <div class="client-name">— Priya K., Marketing Lead</div>
-          </div>
+  <!-- What HeadStart Does -->
+  <section id="solution">
+    <div class="fade-up">
+      <div class="section-subhead">Designed for follow‑through</div>
+      <h2>What HeadStart actually does</h2>
+      <p style="max-width: 720px; margin-top: 0.5rem;">No AI hype, no inbox modification. Five mechanisms that work even on days you’re too busy.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature fade-up"><h3>🎯 Surfaces only what matters</h3><p>Filters commercial noise and no‑reply senders, then classifies mail into action‑required, meeting, status update, or FYI. You see only what deserves attention.</p></div>
+      <div class="feature fade-up"><h3>✅ Tracks follow‑through</h3><p>Checks your Sent and Drafts folders for each actionable email. Reports pending, draft‑started, or responded — deterministic facts, not AI guesses.</p></div>
+      <div class="feature fade-up"><h3>⏰ Morning push at 06:55</h3><p>A single daily push notification on your phone. One tap opens your briefing — also works as a gentle reminder that HeadStart exists, preventing silent churn.</p></div>
+      <div class="feature fade-up"><h3>🔄 On‑demand all day</h3><p>Open the briefing URL anytime to get a fresh delta‑since‑last‑view summary. No mid‑day interruptions, but always available when you need it.</p></div>
+      <div class="feature fade-up"><h3>🛡️ Self‑healing loop</h3><p>If you’re too swamped to engage, yesterday’s unresolved items automatically roll into tomorrow’s briefing. HeadStart works even on the days you don’t.</p></div>
+    </div>
+    <div class="fade-up" style="margin-top: 0.5rem;"><p style="color: var(--text-secondary); border-left: 3px solid var(--accent); padding-left: 1rem;">⚡ No dashboard to install, no app to manage — just a push and a private web page. Your inbox stays untouched.</p></div>
+  </section>
+
+  <!-- CTA + Early Access Form -->
+  <section id="early-access">
+    <div class="cta-card fade-up">
+      <h2>Start every day ahead.</h2>
+      <p style="margin: 0.5rem auto 1rem; max-width: 500px; opacity: 0.9;">Get early access to HeadStart. We’ll notify you when your spot is ready.</p>
+      <form id="signupForm">
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Work email" required>
+          <select id="companySize">
+            <option value="">Company size (optional)</option>
+            <option>1-10 employees</option>
+            <option>11-50</option>
+            <option>51-200</option>
+            <option>201+</option>
+          </select>
         </div>
+        <div class="platform-toggle" id="platformToggle">
+          <label class="toggle-option" data-value="Outlook">📧 Outlook</label>
+          <label class="toggle-option" data-value="Gmail">📨 Gmail</label>
+        </div>
+        <input type="hidden" id="platformPref" value="">
+        <div class="form-group" style="justify-content: center; margin-top: 1.8rem;">
+          <button type="submit" class="btn-primary" style="background: white; color: var(--accent);">Reserve early access →</button>
+        </div>
+        <div class="form-message" id="formMessage"></div>
+      </form>
+      <p style="font-size: 0.75rem; margin-top: 1rem; opacity: 0.7">No spam, no pricing talk — just launch updates.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="fade-up" style="text-align: center;">
+      <div class="section-subhead">Common questions</div>
+      <h2>You have questions. We have honest answers.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up"><div class="faq-question">Will HeadStart read all my email? <span>+</span></div><div class="faq-answer">Yes — to do its job, HeadStart connects via OAuth and processes incoming messages. We never store raw email content longer than necessary, and you can revoke access instantly.</div></div>
+      <div class="faq-item fade-up"><div class="faq-question">Is my data secure? <span>+</span></div><div class="faq-answer">End‑to‑end encryption in transit, no data selling. The architecture supports on‑prem deployment when you’re ready. Your mailbox facts stay yours.</div></div>
+      <div class="faq-item fade-up"><div class="faq-question">What if I miss the 06:55 notification? <span>+</span></div><div class="faq-answer">No problem — yesterday’s pending items appear in tomorrow’s briefing automatically. You can also open the briefing link any time for an on‑demand delta view.</div></div>
+      <div class="faq-item fade-up"><div class="faq-question">Does HeadStart modify my inbox or send emails? <span>+</span></div><div class="faq-answer">Never. HeadStart only reads your mailbox. No auto‑archiving, labeling, or sending on your behalf. Your inbox stays exactly as you left it.</div></div>
+      <div class="faq-item fade-up"><div class="faq-question">Which email platforms are supported? <span>+</span></div><div class="faq-answer">Microsoft 365 (Outlook) and Google Workspace (Gmail). Both integrated via secure APIs — SMB owners on either platform are covered.</div></div>
+      <div class="faq-item fade-up"><div class="faq-question">How does follow‑through tracking actually work? <span>+</span></div><div class="faq-answer">Deterministic check: for each action‑required email, HeadStart looks into Sent and Drafts for a reply. “Draft started” / “responded” are facts, not probabilistic. No AI guesswork.</div></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="about-wrap">
+      <div class="about-text fade-up">
+        <div class="section-subhead">Built with obsession</div>
+        <h2>No hype. Just a tool that respects your time.</h2>
+        <p style="margin: 1.5rem 0;">HeadStart is built by <strong>SMB‑Integrator</strong>, a small team that lives inside the same inbox chaos you do. We’re pre‑launch, building in public, and dead‑set against fake urgency, fake testimonials, and overhyped AI features. Our bet: a simple morning briefing that actually tracks follow‑through will save SMB owners hours every week — and protect their most important relationships.</p>
+        <p>No dashboard, no installation. Just a push notification and a web page that works for you, even on your busiest day.</p>
+      </div>
+      <div class="signet fade-up">
+        <span>“HeadStart works even on the days you don’t.”</span>
+        <div style="margin-top: 1rem; font-size: 0.8rem;">— SMB-Integrator team</div>
       </div>
     </div>
+  </section>
 
-    <!-- Contact + Form -->
-    <section id="contact">
-      <div class="container" style="margin-top: 50px;">
-        <h2 class="section-title reveal">Let's work together</h2>
-        <p class="section-sub reveal">Got a project in mind? Let's turn your idea into reality.</p>
-        <div class="contact-form reveal">
-          <form id="freelance-contact-form">
-            <div class="form-group">
-              <input type="text" id="name" placeholder="Full name *" required>
-            </div>
-            <div class="form-group">
-              <input type="email" id="email" placeholder="Email address *" required>
-            </div>
-            <div class="form-group">
-              <input type="text" id="project" placeholder="Project type (website / web app / design)">
-            </div>
-            <div class="form-group">
-              <textarea rows="4" id="message" placeholder="Tell me about your vision, timeline, or any details... *" required></textarea>
-            </div>
-            <button type="submit" class="btn-primary" style="width:100%; border: none;">Send message →</button>
-            <p style="font-size: 0.8rem; text-align: center; margin-top: 16px; color: #4b5563;">I’ll reply within 24h. No spam, guaranteed.</p>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
+  <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>© 2025 FreelanceFlow — High‑quality freelancing for modern businesses.</p>
-      <p style="margin-top: 12px; font-size: 0.85rem;">📍 Based globally · Remote friendly · Always open to new challenges</p>
+    <div>© 2026 HeadStart by SMB-Integrator — early access only.</div>
+    <div class="footer-links">
+      <a href="#">Privacy (in brief)</a>
+      <a href="#early-access">Early access</a>
+      <a href="#">Contact</a>
     </div>
   </footer>
+</div>
 
-  <script>
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href === "#" || href === "") return;
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
+<script>
+  // Intersection Observer for fade-up animations
+  const fadeElements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+  fadeElements.forEach(el => observer.observe(el));
 
-    // Intersection Observer for scroll reveal animations
-    const revealElements = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // stop observing once animated
-        }
-      });
-    }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+  // Platform toggle selection
+  let selectedPlatform = '';
+  const toggleOptions = document.querySelectorAll('.toggle-option');
+  const platformHidden = document.getElementById('platformPref');
+  toggleOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      toggleOptions.forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      selectedPlatform = opt.getAttribute('data-value');
+      platformHidden.value = selectedPlatform;
+    });
+  });
 
-    revealElements.forEach(el => observer.observe(el));
-
-    // Contact form handling
-    const contactForm = document.getElementById('freelance-contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('name')?.value.trim();
-        const email = document.getElementById('email')?.value.trim();
-        const message = document.getElementById('message')?.value.trim();
-
-        if (!name || !email || !message) {
-          alert('❌ Please fill in all required fields (name, email, message).');
-          return;
-        }
-        if (!email.includes('@') || !email.includes('.')) {
-          alert('⚠️ Please enter a valid email address.');
-          return;
-        }
-
-        alert(`✨ Thanks ${name}! Your message has been sent. I'll get back to you shortly.`);
-        contactForm.reset();
-      });
+  // Signup form handling (no fake backend, just demo)
+  const form = document.getElementById('signupForm');
+  const msgDiv = document.getElementById('formMessage');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    if (!email || !email.includes('@')) {
+      msgDiv.innerHTML = '<span style="color:#FFB59E;">Please enter a valid email address.</span>';
+      return;
     }
-  </script>
+    const company = document.getElementById('companySize').value || 'Not specified';
+    const platform = platformHidden.value || 'Not specified';
+    // just record intent — no storage promises beyond demo
+    console.log(`Early access signup: ${email}, size: ${company}, platform: ${platform}`);
+    msgDiv.innerHTML = '<span style="color: #EED7CC;">✨ Thanks! You’re on the early access list. We’ll reach out soon.</span>';
+    form.reset();
+    platformHidden.value = '';
+    toggleOptions.forEach(o => o.classList.remove('selected'));
+    // clear message after 4 secs
+    setTimeout(() => { msgDiv.innerHTML = ''; }, 4000);
+  });
+
+  // FAQ accordion
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const questionDiv = item.querySelector('.faq-question');
+    questionDiv.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      faqItems.forEach(i => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    });
+  });
+  // open first faq by default (optional but friendly)
+  if(faqItems.length) faqItems[0].classList.add('active');
+</script>
 </body>
 </html>
